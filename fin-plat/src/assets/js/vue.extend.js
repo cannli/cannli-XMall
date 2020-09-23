@@ -1,8 +1,4 @@
-/* eslint-disable eqeqeq */
-/* eslint-disable no-var */
-/* eslint-disable no-param-reassign */
-/* eslint-disable sonarjs/cognitive-complexity */
-/* eslint-disable sonarjs/no-collapsible-if */
+
 import moment from 'moment';
 
 export default function(Vue) {
@@ -114,7 +110,6 @@ export default function(Vue) {
     }
   };
 
-  // eslint-disable-next-line sonarjs/cognitive-complexity
   Vue.prototype.debounce = function(func, wait, immediate) {
     let timeout;
     let args;

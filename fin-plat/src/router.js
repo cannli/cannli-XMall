@@ -25,24 +25,7 @@ const routes = [
     path: '/',
     name: ' ',
     component: Layout,
-    meta: {
-      title: '',
-      path: '/',
-    },
-    children: [
-      {
-        path: '',
-        redirect: '/login',
-      },
-      {
-        path: '/login',
-        component: login,
-        name: '登录',
-        meta: {
-          title: '',
-        },
-      },
-    ],
+    meta: {title: '', path: '/',}
   },
   // {
   //   path: '/about',

@@ -62,7 +62,9 @@ import {
   TimelineItem,
   Card,
   Timeline,
+  RadioButton
 } from 'element-ui';
+Vue.use(RadioButton);
 Vue.use(TimelineItem);
 Vue.use(Card);
 Vue.use(Timeline);

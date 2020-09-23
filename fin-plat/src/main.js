@@ -6,10 +6,12 @@ import store from './store';
 import './permission';
 import '@/assets/scss/reset.scss';
 import Axios from '@/assets/js/axios';
+import cookies from 'vue-cookies'
 
 // 监控、测试、错误上报、埋点
 // import '@/config/aegis';
 import './core';
+
 Vue.use(VueRouter);
 Vue.config.productionTip = false;
 new Vue({
@@ -17,6 +19,7 @@ new Vue({
   store,
   render: h => h(App),
 }).$mount('#app');
+Vue.prototype.$cookies = cookies;
 Vue.prototype.$axios = Axios;
 app.$axios = Axios;
 window.app = app;
