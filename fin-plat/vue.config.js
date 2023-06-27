@@ -129,7 +129,7 @@ module.exports = {
   // use thread-loader for babel & TS in production build
   // enabled by default if the machine has more than 1 cores
   parallel: require('os').cpus().length > 1,
-
+  lintOnSave: false,
   devServer: {
     port: 9999, // 端口
     open: true, // 自动开启浏览器

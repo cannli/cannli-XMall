@@ -6,9 +6,9 @@
     :collapse="isCollapse"
     :collapse-transition="true"
   >
-    <template v-for="menu in menus">
+    <template v-for="menu in setMenus">
       <el-submenu
-        :index="menu.index"
+        :index="String(menu.index)"
         :key="menu.index"
         v-if="menu.children && menu.children.length > 0"
       >
@@ -16,29 +16,33 @@
           <i :class="menu.icon"></i>
           <span slot="title">{{ menu.title }}</span>
         </template>
+        <el-menu-item-group>
+          <el-menu-item v-for="child in menu.children" :key="child.path" :index="child.path">
+            <i :class="child.icon"></i>{{ child.key }}
+          </el-menu-item>
+        </el-menu-item-group>
       </el-submenu>
 
-      <el-menu-item
+      <!--<el-menu-item
         :index="menu.title"
         :key="menu.title"
-        v-if="menu.isFundFlowAdmin === 1"
         @click="pathTo(menu.path)"
       >
         <i :class="menu.icon"></i>
         <span slot="title">{{ menu.title }}</span>
-      </el-menu-item>
+      </el-menu-item>-->
     </template>
   </el-menu>
 </template>
 
 <script>
 import { mapState, mapGetters } from 'vuex';
-import menus from '@/config/menu';
+import {meuns} from '@/config/menu'
 
 export default {
   data() {
     return {
-      menus,
+      setMenus: meuns[0].meunChilds,
       isFundFlowAdmin: '',
     };
   },
@@ -54,12 +58,19 @@ export default {
       deep: true,
       immediate: true,
     },
+    menuKey(val) {
+      for (let x in menus) {
+        if (menus[x].key === val) {
+          this.setMenus = menus[x].meunChilds
+        }
+      }
+    }
   },
   computed: {
     ...mapState({
       isCollapse: state => state.app.isCollapse,
     }),
-    ...mapGetters({ userInfo: 'userInfo' }),
+    ...mapGetters({ userInfo: 'userInfo', menuKey: 'menuKey' }),
     getMenuActive() {
       return this.$route.name;
     },

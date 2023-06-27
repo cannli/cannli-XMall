@@ -5,6 +5,7 @@
         <fdt-header />
       </el-header>
       <el-container>
+        <fdt-sidebar />
         <el-main class="system-site-main" style=" height: calc(100vh - 64px);">
           <section class="system-container">
             <router-view> </router-view>
@@ -18,12 +19,14 @@
 <script>
 import FdtHeader from './header.vue';
 import { mapGetters } from 'vuex';
+import FdtSidebar from './sidebar.vue';
 // import FdtBreadcrumb from './breadcrumb.vue';
 
 export default {
   name: 'Layout',
   components: {
     FdtHeader,
+    FdtSidebar
   },
   data() {
     return {

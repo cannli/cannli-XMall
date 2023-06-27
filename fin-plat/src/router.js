@@ -2,7 +2,8 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import login from './views/login/index';
 import Layout from '@/components/layout/index.vue';
-
+ import dome1 from '@/views/IndividualFunction/dome1.vue'
+import dome2 from '@/views/IndividualFunction/dome2.vue'
 // 处理各模块路由
 const modulesList = [];
 const modulesFiles = require.context('./views', true, /^\.\/.*\/router\.js$/);
@@ -23,9 +24,14 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: '/',
-    name: ' ',
+    name: '',
     component: Layout,
-    meta: {title: '', path: '/',}
+    meta: {title: '', path: '/',},
+    children: [
+      {path: '', redirect: '/individualFunction/dome1'},
+      {path: '/individualFunction/dome1', component: dome1, name: 'dome1'},
+      {path: '/individualFunction/dome2', component: dome2, name: 'dome2'}
+    ]
   },
   // {
   //   path: '/about',

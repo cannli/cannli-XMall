@@ -4,7 +4,7 @@ import watermark from 'watermark-dom';
 const state = {
   isCollapse: false,
   userInfo: { name: '', isFundFlowAdmin: '', img: '' },
-  menuKey: '1',
+  menuKey: 0,
   // 记录上次的路由
   pathOld: '',
 };
